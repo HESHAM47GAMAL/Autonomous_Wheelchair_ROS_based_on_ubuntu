@@ -21,6 +21,6 @@
 ##Setup Laptop
 <p> ⚡If you as almost of people use windows 🙄 ,You will need Ubuntu version 20.04 as project work on OS linux </p>
 <p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
-<p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw">🔗</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s">🔗</a> </p>
+<p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" style="color: red;">🔗</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s" style="color: red;">🔗</a> </p>
  
  

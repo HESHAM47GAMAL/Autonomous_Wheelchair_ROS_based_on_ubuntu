@@ -1,6 +1,8 @@
 # Autonomous_Wheelchair_ROS_based_on_ubuntu🦼🤖🔥
 
 - [Description](#Description)
+- [Steps](#Steps)
+  -[Setup Laptop](#Setup_laptop)   
 - [Tools & setup](#Tools_&_setup)
 - [IDE](#IDE)
 
@@ -12,3 +14,12 @@
 <p> ⚡GUI has configuration to add routine as save user effort to select every time sequence of target selection </p>
 <p> ⚡ So how work our ninja wheelchair🐱‍👤  </p>
 <p> ⚡ 1.At first chair as setup scan want apartment to create map that 
+  
+##Steps
+<p>⚡Here will talk about every step literally from setup to make project work 🤩</p>
+
+##Setup Laptop
+<p> ⚡If you as almost of people use windows 🙄 ,You will need Ubuntu version 20.04 as project work on OS linux </p>
+<p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
+<p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them  [🔗](https://www.youtube.com/watch?v=aKKdiqVHNqw) or [🔗](https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s)
+ 

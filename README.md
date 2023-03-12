@@ -2,7 +2,7 @@
 
 - [Description](#Description)
 - [Steps](#Steps)
-  -[Setup Laptop](#Setup_laptop)   
+  - [Setup Laptop](#Setup_laptop)   
 - [Tools & setup](#Tools_&_setup)
 - [IDE](#IDE)
 

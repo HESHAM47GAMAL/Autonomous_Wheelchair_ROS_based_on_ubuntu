@@ -15,10 +15,10 @@
 <p> ⚡ So how work our ninja wheelchair🐱‍👤  </p>
 <p> ⚡ 1.At first chair as setup scan want apartment to create map that 
   
-##Steps
+## Steps
 <p>⚡Here will talk about every step literally from setup to make project work 🤩</p>
 
-##Setup Laptop
+## Setup Laptop
 <p> ⚡If you as almost of people use windows 🙄 ,You will need Ubuntu version 20.04 as project work on OS linux </p>
 <p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
 <p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s" >🔗Press</a> </p>

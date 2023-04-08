@@ -1,0 +1,8 @@
+prefix=/home/heshamgamal/catkin_ws_1/devel
+
+Name: differential_drive2
+Description: Description of differential_drive2
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

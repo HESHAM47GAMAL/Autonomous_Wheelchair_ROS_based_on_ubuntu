@@ -1,0 +1,23 @@
+
+roslaunch freenect_launch freenect.launch depth_registration:=true
+
+rosrun rosserial_python serial_node.py __name:="arduino" _port:=/dev/ttyACM0 _baud:=115200
+rosrun rosserial_python serial_node.py __name:="node2" _port:=/dev/ttyACM1 _baud:=115200
+roslaunch differential_drive diff_drive.launch
+
+
+roslaunch mobile_robot rviz.launch
+
+roslaunch *where rtabmap launch is" mapping.launch
+
+if config  ---> export ROS_HOSTNAME=your_ip   -->for vertual joystick
+
+
+rqt_plot /lwheel_vtarget/data /lwheel_vel/data 
+/lmotor_cmd/data --->  plot value
+
+ 
+ 
+ 
+ 
+

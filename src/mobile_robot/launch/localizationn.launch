@@ -1,0 +1,90 @@
+<launch>
+ <arg name="database_path"     default="rtabmap.db"/>
+
+
+
+  <!-- Kinect cloud to laser scan -->
+    <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+      <remap from="image"       to="/camera/depth_registered/image_raw"/>
+      <remap from="camera_info" to="/camera/depth_registered/camera_info"/>
+      <remap from="scan"        to="/kinect_scan"/>
+      <param name="range_max" type="double" value="4"/>
+    </node>
+  <group ns="rtabmap">
+   <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="">
+        <param name="frame_id" type="string" value="base_link"/>
+        <param name="subscribe_depth" type="bool" value="true"/>
+        <param name="subscribe_scan" type="bool" value="true"/>
+        <param name="subscribe_rgb" type="bool" value="true"/>
+        <param name="publish_tf" type="bool" value="true"/>
+        <param name="approx_sync_max_interval" type="double" value="0"/>
+        <param name="subscribe_odom_info" type="bool" value="false"/>
+        <param name="database_path"       type="string" value="$(arg database_path)"/>
+
+
+        <param name="queue_size" type="int" value="30"/>
+        <param name="approx_sync" type="bool" value="true"/>
+
+        <remap from="odom" to='/odom'/>
+        <remap from="rgb/image" to="/camera/rgb/image_rect_color"/>
+        <remap from="depth/image" to="/camera/depth_registered/image_raw"/>
+        <remap from="rgb/camera_info" to="/camera/rgb/camera_info" />
+        <remap from="scan" to="/kinect_scan"/>
+
+        
+        <remap from="grid_map" to="/map"/>
+        <param name="RGBD/NeighborLinkRefining" type="string" value="true"/>
+        <!-- I think it should be false -->
+        <param name="RGBD/ProximityBySpace" type="string" value="false"/>  <!-- Local loop closure detection (using estimated position) with locations in WM -->
+        <param name="RGBD/AngularUpdate" type="string" value="0.01"/>
+        <param name="RGBD/LinearUpdate" type="string" value="0.01"/>
+        <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+        <param name="Optimizer/Slam2D" type="string" value="true"/>
+        <param name="Reg/Strategy" type="string" value="1"/>
+        <!-- I think it should be true -->
+        <!-- When set to "true", the registration algorithm will only estimate a 3DoF transformation, which includes the x, y, and yaw components of the transformation. This means that the algorithm will assume that the robot is moving on a plane and cannot move in the vertical direction or rotate around the z-axis. This can be useful in scenarios where the robot's motion is mostly constrained to a 2D plane, such as in indoor environments with flat floors.
+
+        When set to "false", the registration algorithm will estimate a 6DoF transformation, which includes the x, y, z, roll, pitch, and yaw components of the transformation. This means that the algorithm will consider the possibility of the robot moving up or down and rotating around the z-axis. This can be useful in scenarios where the robot's motion is not constrained to a 2D plane, such as in outdoor environments or on uneven terrain. -->
+        <param name="Reg/Force3DoF" type="string" value="true"/>
+        <!-- value I think should be 12   should be large number as help in trajectory and will lead to high computetional power -->
+        <param name="Vis/MinInliers" type="string" value="12"/>
+        <param name="Vis/MinInlierDistance" type="string" value="0.1"/>
+        <param name="Rtabmap/TimeThr" type="string" value="700"/>
+        <param name="Mem/RehearsalSimilarity" type="string" value="0.45"/>
+        <param name="Mem/IncrementalMemory" type="string" value="false"/>
+       
+        <!-- added new  -->
+        <!--  When "Mem/InitWMWithAllNodes" is set to "true", the working memory will be initialized with all nodes in the map at startup, regardless of their relevance or recency. This can be useful when the robot is expected to operate in a large and complex environment and needs access to a large number of nodes in the map.
+        When "Mem/InitWMWithAllNodes" is set to "false", the working memory will be initialized with a smaller subset of nodes based on 
+        their recency and relevance to the robot's current task. 
+        This is the default behavior of RTAB-Map and is suitable for most applications.-->
+        <param name="Mem/InitWMWithAllNodes" type="string" value ="true"/>
+        <param name="RGBD/OptimizeStrategy" type="string" value="2"/> <!--g2o=1,roslaunch mobile_robot rviz.launch GTSAM=2--> 
+        <!--<param name="Mem/NotLinkedNodesKept" type="string" value="true"/>-->
+        <param name="RGBD/OptimizeRobust" type="string" value="true"/>
+        <param name="RGBD/OptimizeMaxError" type="string" value="0"/> <!--should be 0 if RGBD/OptimizeRobust is true-->
+        <param name="cloud_noise_filtering_radius" value="0.05"/>
+        <param name="cloud_noise_filtering_min_neighbors" value="2"/> 
+        <param name="Rtabmap/DetectionRate" type="string" value="10"/>
+        <param name ="Mem/BadSignaturesIgnored" type="bool" value="true"/>
+        <param name="Rtabmap/ImageBufferSize" type="int" value="0"/>
+
+        <!-- new parameters-->
+
+        <param name="Mem/RehearsalIdUpdatedToNewOne" type="bool" value="true"/>
+        <param name="Mem/BadSignaturesIgnored" type="bool" value="true"/>
+        <param name="RGBD/LoopClosureIdentityGuess" type="bool" value="false"/>
+        <param name="Odem/FilteringStrategy" type="int" value="1"/>
+        <param name="Mem/ReduceGraph" type="bool" value="true"/>
+
+
+        <!-- <param name="Odom/FilteringStrategy" type="int" value="1"/>
+        <param name="Rtabmap/LoopThr" type="Float" value="0.03"/> -->
+
+
+ 
+
+
+    </node>
+  </group>
+</launch>

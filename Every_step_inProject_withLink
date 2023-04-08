@@ -1,0 +1,95 @@
+⚡️install ros:
+	1.https://www.youtube.com/watch?v=Qk4vLFhvfbI&list=PLLSegLrePWgIbIrA4iehUQ-impvIXdd9Q&index=1&ab_channel=RoboticsBack-End
+	2.http://wiki.ros.org/noetic/Installation/Ubuntu
+	
+
+⚡️we site for all ros tutorial 
+	http://wiki.ros.org/ROS/Tutorials
+
+⚡️setup_my_robot  (to make navigation choose sensor available in robot)
+	http://wiki.ros.org/rtabmap_ros/Tutorials/SetupOnYourRobot	
+	
+⚡️UDRF 
+	💫️ red axis is x , green axis is y ,blue axis is z
+	https://www.youtube.com/watch?v=-fMxgG1cPDA&t=15s&ab_channel=MuhammadLuqman    (how make it)
+	http://wiki.ros.org/urdf
+	⚡️will face some problem due to missed somethings
+		1.sudo apt-get install ros-noetic-robot-state-publisher
+		2.sudo apt-get install ros-noetic-joint-state-publisher-gui	
+🔥️differential drive 
+	1.https://www.youtube.com/watch?v=ocUJuuGqz2c&ab_channel=IGENTECH
+	
+⚡️install tf2 tools
+	https://get-help.robotigniteacademy.com/t/tf2-tools-not-installed-for-ros-navigation-project/9666
+	
+	
+🔥️ move it 
+	1.https://ros-planning.github.io/moveit_tutorials/
+	
+⚡️setup diffrential_drive and stack of differential
+	1.http://wiki.ros.org/differential_drive
+	2.http://wiki.ros.org/differential_drive/tutorials/setup
+	
+	
+	
+⚡️vertual joystick  (get ip for mobile to publish twist)
+	1.https://www.makeuseof.com/fix-ifconfig-command-not-found-error-linux/    -->fix ifconfig not work
+	2.https://github.com/ROS-Mobile/ROS-Mobile-Android/wiki/Tutorials	    --> get ip and put it in mobile
+	export ROS_HOSTNAME=192.168.43.100
+	
+	
+⚡️update python version to kivyMD to make slider and gui
+	1.https://hostadvice.com/how-to/how-to-install-python-3-6-in-ubuntu-4-04-16-04-16-10-and-17-04/
+	
+	
+	
+	
+⚡️🔥️ repo shreif 
+	https://github.com/MostafaAmr45/COVID19_ROS_based_robot
+	
+🔥️link for navigation stack 3d :
+	http://wiki.ros.org/rtabmap_ros/Tutorials/MappingAndNavigationOnTurtlebot
+	https://kiranpalla.com/autonomous-navigation-ros-differential-drive-robot-simulation/simple-navigation-with-differential-drive-plugin/  (link talk about navigation)
+	
+
+🔥️ RTABMAP 
+	1.http://docs.ros.org/en/indigo/api/rtabmap/html/classrtabmap_1_1Parameters.html
+	2.https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h
+	3.http://docs.ros.org/en/indigo/api/rtabmap/html/classrtabmap_1_1Parameters.html
+	
+	
+🔥️helpful link:
+	1.https://people.eng.unimelb.edu.au/pbeuchat/asclinic/software/building_blocks_for_autonomous_systems.html
+	
+	
+🔥️may help in GUI
+	https://www.youtube.com/watch?v=Cg1DaNFnZyY
+	
+	
+🔥️map 3d but not with RTAB map 
+	https://wilselby.com/research/ros-integration/3d-mapping-navigation/
+	
+	
+🔥️solve problem of navigation missing 
+	1.sudo apt-get install ros-noetic-tf2-sensor-msgs
+	2.sudo apt-get install libbullet-dev
+	3.sudo apt-get install libsdl1.2-dev
+	4.sudo apt-get install libsdl-image1.2-dev
+	
+	
+🔥️navigation
+	https://github.com/ros-planning/navigation	
+	http://www.yahboom.net/public/upload/upload-html/1638953011/Navigation%20and%20avoiding.html#71usage
+	
+	
+🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️🔥️ search for package 
+	rospack find tf2_sensor_msgs   --->(to be generic) rospack find package_name
+	
+	
+🔥️🔥️install rqt_reconfigure_param
+	sudo apt install ros-noetic-rqt-reconfigure
+	
+	
+🔥️🔥️🔥️To check if the map to odom transform
+	rosrun tf tf_monitor
+

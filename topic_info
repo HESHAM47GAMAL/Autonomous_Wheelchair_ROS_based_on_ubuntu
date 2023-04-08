@@ -1,0 +1,6 @@
+🔥️freenect_launch
+	/camera_base_link - The depth camera frame
+	/camera_base_link1 - The RGB camera frame
+	/camera_base_link2 - Another RGB camera frame (Kinect v2 has two RGB cameras)
+	/camera_base_link3 - Unknown, probably unused
+	

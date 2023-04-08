@@ -1,0 +1,8 @@
+prefix=/home/heshamgamal/catkin_ws_1/devel
+
+Name: service_pkg
+Description: Description of service_pkg
+Version: 0.0.0
+Cflags: -I/home/heshamgamal/catkin_ws_1/devel/include
+Libs: -L${prefix}/lib 
+Requires: 

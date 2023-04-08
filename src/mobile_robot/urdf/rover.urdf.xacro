@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rover">
+    
+
+    <link name="base_link">
+        
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.0 0.0 0.0"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.0 1.0 1.0 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        
+    </link>
+   
+    
+    <link name="base_uplayer_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.61 0.58 0.04"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.0 1.0 1.0 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.61 0.58 0.04"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0.0 0.0 0.195" rpy="0.0 0.0 -1.57"/>   <!-- here can control height from z -->
+        <parent link="base_link"/>
+        <child link="base_uplayer_link"/>
+        <!-- here if link can move here choose axis who move around -->
+        <axis xyz="0.0 0.0 0.0"/>
+        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> currently we don't need limity  -->
+    </joint>
+
+
+    <!-- All Wheel links and joints -->
+    <xacro:macro name="wheel" params="name x y">
+
+        <link name="wheel_${name}_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="0.5"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.195" length="0.04"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.0 0.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+               <cylinder radius="0.195" length="0.04"/>
+            </geometry>
+        </collision>
+        </link>
+
+        <joint name="wheel_${name}_joint" type="continuous">
+            <origin xyz="${x} ${y} 0.0" rpy="0.0 1.57 0.0"/>
+            <parent link="base_uplayer_link"/>
+            <child link="wheel_${name}_link"/>
+            <axis xyz="0.0 0.0 1.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+
+    </xacro:macro>
+ 
+    <!-- Back Left wheel create  using xacro macros-->
+    <xacro:wheel name="back_left" x="-0.325" y="-0.29" />
+    <!-- Back Right wheel create  using xacro macros-->
+    <xacro:wheel name="back_right" x="0.325" y="-0.29" />
+    <!-- Front Left wheel create  using xacro macros-->
+    <xacro:wheel name="front_left" x="-0.325 " y="0.29" />
+    <!-- Front Right wheel create  using xacro macros-->
+    <xacro:wheel name="front_right" x="0.325 " y="0.29" />
+
+
+    <!-- All column links and joints -->
+    <xacro:macro name="column" params="name x y">
+    
+        <link name="column_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.04 0.25"/>
+                </geometry>
+                <material name="">
+                    <color rgba="1.0 0.0 0.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.04 0.25"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="column_${name}_joint" type="fixed">
+        <!-- here make  x = 0.28 instead of x=0.285 to make column not touch wheel -->
+            <origin xyz="${x} ${y} 0.145" rpy="0.0 0.0 0.0"/>
+            <parent link="base_uplayer_link"/>
+            <child link="column_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+
+    </xacro:macro>
+
+    <!-- Back Left column create  using xacro macros-->
+    <xacro:column name="back_left" x="-0.242" y="-0.27" />
+    <!-- Back Right column create  using xacro macros-->
+    <xacro:column name="back_right" x="0.242" y="-0.27" />
+    <!-- Front Left column create  using xacro macros-->
+    <xacro:column name="front_left" x="-0.242" y="0.27" />
+    <!-- Front Right column create  using xacro macros-->
+    <xacro:column name="front_right" x="0.242" y="0.27" />
+
+    <!-- All Parallel column link and joint -->
+
+    <xacro:macro name="parallelColumn" params="name x">
+        
+        
+        <link name="conect_2_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.58 0.04"/>
+                </geometry>
+                <material name="">
+                    <color rgba="1.0 1.0 0.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.58 0.04"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="conect_2_${name}_joint" type="fixed">
+            <origin xyz=" ${x} 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <parent link="base_uplayer_link"/>
+            <child link="conect_2_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+    </xacro:macro>
+    <!-- left parallel column create using macros -->
+    <xacro:parallelColumn name="left_columns" x="-0.242" />
+    <!-- right parallel column create using macros -->
+    <xacro:parallelColumn name="right_columns" x="0.242" />
+
+    <!-- create seat link and joint  -->
+    <link name="seat_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.445 0.49 0.04"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.445 0.49 0.04"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="seat_joint" type="fixed">
+        <origin xyz="0.0 -0.045 0.25" rpy="0.0 0.0 0.0"/>
+        <parent link="base_uplayer_link"/>
+        <child link="seat_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+    </joint>
+
+
+    <!-- All vertical column for stand  link and joint -->
+    <xacro:macro name="carriage_stand" params="name x">
+
+        <link name="carriage_stand_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.03 0.06 0.125"/>
+                </geometry>
+                <material name="">
+                    <color rgba="0.0 0.5 0.5 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                   <box size="0.03 0.06 0.125"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="carriage_stand_${name}_joint" type="fixed">
+            <origin xyz="${x} 0.0 0.0825" rpy="0.0 0.0 0.0"/>
+            <parent link="seat_link"/>
+            <child link="carriage_stand_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+
+    </xacro:macro>
+    <!-- create left carriage_stand using macro -->
+    <xacro:carriage_stand name="left" x="-0.24"/>
+    <!-- create right carriage_stand using macro -->
+    <xacro:carriage_stand name="right" x="0.24"/>
+
+    <!-- All Parallel column for stand  link and joint -->
+    <xacro:macro name="parallel_stand" params="name x">
+
+        <link name="parallel_stand_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.25 0.02"/>
+                </geometry>
+                <material name="">
+                    <color rgba="0.0 0.0 0.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                   <box size="0.04 0.25 0.02"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="parallel_stand_${name}_joint" type="fixed">
+            <origin xyz="${x} 0.0 0.14" rpy="0.0 0.0 0.0"/>
+            <parent link="seat_link"/>
+            <child link="parallel_stand_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+
+    </xacro:macro>
+    <!-- create left parallel stand (actaully stand ) using macros -->
+    <xacro:parallel_stand name="left" x="-0.24"/>
+    <!-- create right parallel stand (actaully stand ) using macros -->
+    <xacro:parallel_stand name="right" x="0.24"/>
+
+    <!-- All column for Back seat link and joint -->
+    <xacro:macro name="column_back" params="name x">
+
+        <link name="column_back_seat_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.04 0.3"/>
+                </geometry>
+                <material name="">
+                    <color rgba="0.7 0.7 0.7 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <box size="0.04 0.04 0.3"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="column_back_seat_${name}_joint" type="fixed">
+            <origin xyz="${x} -0.225 0.17" rpy="0.0 0.0 0.0"/>
+            <parent link="seat_link"/>
+            <child link="column_back_seat_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+    </xacro:macro>
+    <!-- create left column that will used to make back seat using macros -->
+    <xacro:column_back name="left" x="-0.202 "/>
+    <!-- create right column that will used to make back seat using macros -->
+    <xacro:column_back name="right" x="0.202 "/>
+
+    <!-- create back link and jont -->
+    <link name="back_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.365 0.26 0.02"/>
+            </geometry>
+            <material name="">
+                <color rgba="1.0 0.0 0.0 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.365 0.26 0.02"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="back_joint" type="fixed">
+        <origin xyz="0.0 -0.22 0.148" rpy="1.57 0.0 0.0"/>
+        <parent link="seat_link"/>
+        <child link="back_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <!-- All handle to move chair link and joint -->
+    <xacro:macro name="handle_chair" params="name parent_link ">
+    
+        <link name="handle_${name}_link">
+            <inertial>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <mass value="0.02"/>
+                <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+            </inertial>
+            <visual name="">
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.01" length="0.08"/>
+                </geometry>
+                <material name="">
+                    <color rgba="0.0 0.0 0.0 1.0"/>
+                    <texture filename=""/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.01" length="0.08"/>
+                </geometry>
+            </collision>
+        </link>
+        <!-- 0.0 -0.04 0.13" -->
+        <joint name="handle_${name}_joint" type="fixed">
+            <origin xyz="0.0 -0.04 0.13" rpy="1.57 0.0 0.0"/>
+            <parent link="${parent_link}"/>
+            <child link="handle_${name}_link"/>
+            <axis xyz="0.0 0.0 0.0"/>
+            <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+        </joint>
+
+    </xacro:macro>
+
+    <xacro:handle_chair name="left" parent_link="column_back_seat_left_link" />
+    <xacro:handle_chair name="right" parent_link="column_back_seat_right_link" />
+
+    <!-- create stand for camera link and joint -->
+    <link name="camera_stand_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.05 0.05 0.42 "/>
+            </geometry>
+            <material name="">
+                <color rgba="0.2 1.0 0.5 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.05 0.05 0.29"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="camera_stand_joint" type="fixed">
+        <origin xyz="0.0 -0.245 0.21" rpy="0.0 0.0 0.0"/>
+        <parent link="seat_link"/>
+        <child link="camera_stand_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+    </joint>
+
+    <!-- create camera link and joint -->
+    <link name="camera_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+        <visual name="">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.1 0.2  0.04 "/>
+            </geometry>
+            <material name="">
+                <color rgba="0.1 0.1 0.8 1.0"/>
+                <texture filename=""/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size="0.15 0.05 0.29"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="camera_joint" type="fixed">
+        <parent link="camera_stand_link"/>
+        <origin xyz="0.0 0.0 0.23" rpy="0.0 0.0 1.57"/>
+        <child link="camera_link"/>
+        <axis xyz="0.0 0.0 0.0"/>
+        <!-- <limit lower="0.0" upper="0.0" effort="0.0" velocity="0.0"/> -->
+    </joint>
+
+</robot>
+

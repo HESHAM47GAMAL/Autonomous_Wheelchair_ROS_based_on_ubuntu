@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- 
+    pkg :name of package that contain file name want to run
+    type:naem of .py file want to run to make specific node to run to publish and subscribe
+    name: name I want to put to specific node 
+     -->
+     <!-- ⚠️⚠️⚠️⚠️⚠️⚠️⚠️ not acceptable to put same name for mor than node -->
+    <node pkg="differential_drive" type="diff_tf.py" name="diff_tf">
+    <rosparam param="base_width">0.58</rosparam>
+    <rosparam param="rate">30</rosparam>
+    <rosparam param="ticks_meter">25</rosparam>
+    </node>
+    <!-- <node pkg="differential_drive" type="pid_velocity.py" name="pid_velocity"/> -->
+    
+  <node pkg="differential_drive" type="pid_velocity.py" name="lpid_velocity">
+      <remap from="wheel" to="lwheel"/>
+      <remap from="motor_cmd" to="lmotor_cmd"/>
+      <remap from="wheel_vtarget" to="lwheel_vtarget"/>
+      <remap from="wheel_vel" to="lwheel_vel"/>
+      <rosparam param="Kp">5</rosparam>
+      <rosparam param="Ki">60</rosparam>
+      <rosparam param="Kd">0.5</rosparam>
+      <rosparam param="out_min">-255</rosparam>
+      <rosparam param="out_max">255</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">10</rosparam>
+      <rosparam param="rolling_pts">2</rosparam>
+      <rosparam param="ticks_meter">500</rosparam>
+      
+  </node>
+  <node pkg="differential_drive" type="pid_velocity.py" name="rpid_velocity">
+      <remap from="wheel" to="rwheel"/>
+      <remap from="motor_cmd" to="rmotor_cmd"/>
+      <remap from="wheel_vtarget" to="rwheel_vtarget"/>
+      <remap from="wheel_vel" to="rwheel_vel"/>
+      <rosparam param="Kp">5</rosparam>
+      <rosparam param="Ki">60</rosparam>
+      <rosparam param="Kd">0.5</rosparam>
+      <rosparam param="out_min">-255</rosparam>
+      <rosparam param="out_max">255</rosparam>
+      <rosparam param="rate">30</rosparam>
+      <rosparam param="timeout_ticks">10</rosparam>
+      <rosparam param="rolling_pts">2</rosparam>
+      <rosparam param="ticks_meter">500</rosparam>
+      
+  </node>
+    <node pkg="differential_drive" type="twist_to_motors.py" name="twist_to_motors"/>
+    <!-- <node pkg="differential_drive" type="twist_publisher.py" name="twist_publisher"/> -->
+    <node pkg="differential_drive" type="virtual_joystick.py" name="virtual_joystick"/>
+    <!-- <node pkg="differential_drive" type="wheel_loopback.py" name="wheel_loopback"/> -->
+
+
+
+
+</launch>
+<!-- <node pkg="differential_drive" type="wheel_loopback.py" name="wheel_loopback"/> -->
+    <!-- <node pkg="differential_drive" type="jS_give.py" name="js"/> -->

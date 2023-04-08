@@ -1,0 +1,15 @@
+💫️Create ROS1 Workspace
+	mkdir -p ~/ros1_ws/src
+	cd ~/ros1_ws
+	source /opt/ros/noetic/setup.bash
+	catkin init
+	catkin build
+	source ~/ros1_ws/devel/setup.bash
+💫️Run ROS1 nodes
+	rosrun roscpp_tutorials babbler
+💫️Start a master node using 
+	roscore
+💫️tf is a package that lets the user keep track of multiple coordinate frames over time. tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time.
+💫️ three coordinate frames: a world frame
+💫️any actuated is dynamic transform like  motor 
+💫️ red axis is x , green axis is y ,blue axis is z

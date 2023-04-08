@@ -1,0 +1,12 @@
+🔥️RTAB-Map provides an interface to ROS navigation stack, which includes various path planning algorithms such as Dijkstra's algorithm, A* algorithm, and the DWA (Dynamic Window Approach) local planner.
+
+🔥️Occupancy grid maps: Occupancy grid maps represent the environment as a 2D or 3D grid 
+
+🔥️Topological maps: Topological maps represent the environment as a graph, where nodes represent distinctive locations and edges represent the connections between them. These maps are typically generated using sensor data such as GPS or odometry, and are commonly used in indoor navigation and localization.
+
+🔥️RTAB map arg :
+	1. --delete_db_on_start
+	2.--udebug
+	3.--params
+	4.--params-all
+

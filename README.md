@@ -63,6 +63,20 @@ sudo apt install ros-noetic-desktop
 ```console
 sudo apt install ros-noetic-ros-base
 ```
+  
+<p> 4.setup Enviroment -> open terminal and write gedit ~/.bashrc -> will open text editor and put this line 
+  
+  ```console 
+  source /opt/ros/noetic/setup.bash
+  ```
+  
+  <p> to make system able to see ROS 
+    
+  OR 
+    
+  ```console 
+    echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+    ```
  
  
  

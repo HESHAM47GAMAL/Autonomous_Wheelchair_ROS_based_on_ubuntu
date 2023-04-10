@@ -20,64 +20,64 @@
 # Steps
 <p>⚡Here will talk about every step literally from setup to make project work 🤩</p>
 
-  ## Setup Laptop
-  <p> ⚡If you as almost of people use windows 🙄 ,You will need Ubuntu version 20.04 as project work on OS linux </p>
-  <p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
-  <p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s" >🔗Press</a> </p>
+## Setup Laptop
+<p> ⚡If you as almost of people use windows 🙄 ,You will need Ubuntu version 20.04 as project work on OS linux </p>
+<p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
+<p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s" >🔗Press</a> </p>
 
-  ## Install-ROS-Noetic
+## Install-ROS-Noetic
 
-  <p> 1.Setup your sources.list
+<p> 1.Setup your sources.list
+
+```console 
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+
+<p> 2.Set up your keys
+
+```console 
+sudo apt install curl # if you haven't already installed curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+```
+
+<p> 3.Installation
+
+```conole 
+sudo apt update
+```
+
+<p>Now pick how much of ROS you would like to install.
+<p> 3.1Desktop-Full Install: (Recommended): Everything in Desktop plus 2D/3D simulators and 2D/3D perception packages
+
+```console
+sudo apt install ros-noetic-desktop-full
+```
+
+<p> 3.2 Desktop Install: Everything in ROS-Base plus tools like rqt and rviz
+
+```console
+sudo apt install ros-noetic-desktop
+```
+
+<p> 3.3 ROS-Base: (Bare Bones) ROS packaging, build, and communication libraries. No GUI tools.
+
+```console
+sudo apt install ros-noetic-ros-base
+```
+
+<p> 4.setup Enviroment -> open terminal and write gedit ~/.bashrc -> will open text editor and put this line 
 
   ```console 
-  sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+  source /opt/ros/noetic/setup.bash
   ```
 
-  <p> 2.Set up your keys
+  <p> to make system able to see ROS 
+
+  OR 
 
   ```console 
-  sudo apt install curl # if you haven't already installed curl
-  curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+    echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
   ```
 
-  <p> 3.Installation
 
-  ```conole 
-  sudo apt update
-  ```
-
-  <p>Now pick how much of ROS you would like to install.
-  <p> 3.1Desktop-Full Install: (Recommended): Everything in Desktop plus 2D/3D simulators and 2D/3D perception packages
-
-  ```console
-  sudo apt install ros-noetic-desktop-full
-  ```
-
-  <p> 3.2 Desktop Install: Everything in ROS-Base plus tools like rqt and rviz
-
-  ```console
-  sudo apt install ros-noetic-desktop
-  ```
-
-  <p> 3.3 ROS-Base: (Bare Bones) ROS packaging, build, and communication libraries. No GUI tools.
-
-  ```console
-  sudo apt install ros-noetic-ros-base
-  ```
-
-  <p> 4.setup Enviroment -> open terminal and write gedit ~/.bashrc -> will open text editor and put this line 
-
-    ```console 
-    source /opt/ros/noetic/setup.bash
-    ```
-
-    <p> to make system able to see ROS 
-
-    OR 
-
-    ```console 
-      echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-    ```
- 
- 
  

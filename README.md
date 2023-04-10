@@ -5,6 +5,7 @@
   - [Setup Laptop](#Setup-laptop)  
   - [Install ROS Noetic](#Install-ROS-Noetic)
   - [Create WorkSpace](#Create-WorkSpace)
+  - [Create Package](#Create-Package)
 - [Tools & setup](#Tools-&-setup)
 - [IDE](#IDE)
 
@@ -107,6 +108,18 @@ sudo apt install ros-noetic-ros-base
   source ~/catkin_ws/devel/setup.bash
   ```
   
+ # Create Package
+  open terminal in directory ~/catkin_ws/src and write
+  
+  ```console 
+  catkin_create_pkg my_package rospy roscpp turtlesim
+  ```
+  
+  then go to ~/catin_ws and open terminal and write
+  
+  ```console
+  catkin_make
+  ```
   
   
  

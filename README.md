@@ -25,7 +25,7 @@
 <p> ⚡As told you I can't let you Dispersed I will attack link that I and My team used  </p>
 <p> ⚡and depend on your machine is  UEFI  GPT will follow one link of them <a href="https://www.youtube.com/watch?v=aKKdiqVHNqw" >🔗Press</a> or <a href="https://www.youtube.com/watch?v=-iSAyiicyQY&t=18s" >🔗Press</a> </p>
 
-## Install-ROS-Noetic
+## Install ROS Noetic
 
 <p> 1.Setup your sources.list
 
@@ -81,7 +81,7 @@ sudo apt install ros-noetic-ros-base
     
  <p> for more info for installation <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" >🔗Press</a>
 
-# Create-WorkSpace
+# Create WorkSpace
    
 <p> open terminal "Ctrl + Alt + T" then write
   

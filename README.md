@@ -78,6 +78,8 @@ sudo apt install ros-noetic-ros-base
   ```console 
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
   ```
+    
+ <p> for more info <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" >🔗Press</a>
 
 
  

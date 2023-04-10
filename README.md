@@ -79,7 +79,35 @@ sudo apt install ros-noetic-ros-base
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
   ```
     
- <p> for more info <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" >🔗Press</a>
+ <p> for more info for installation <a href="http://wiki.ros.org/noetic/Installation/Ubuntu" >🔗Press</a>
 
-
+#Create-WorkSpace
+   
+<p> open terminal "Ctrl + Alt + T" then write
+  
+```console 
+  ls 
+  mkdir catkin_ws/
+  cd catkin_ws/
+  ls
+  mkdir src
+  ls
+  catkin_make
+```
+  
+<p>After doing this you should put setup.bash in source so do 
+  
+ ```console 
+  gedit ~/.bashrc 
+  ```
+  
+  then will open text editor ,👀️👀️👀️👀️👀️ try to put this line after  "source /opt/ros/noetic/setup.bash " that added above 
+  
+  ```console 
+  source ~/catkin_ws/devel/setup.bash
+  ```
+  
+  
+  
+ 
  

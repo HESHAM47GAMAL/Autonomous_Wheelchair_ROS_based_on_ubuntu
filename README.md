@@ -76,7 +76,7 @@ sudo apt install ros-noetic-ros-base
     
   ```console 
     echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
-    ```
+  ```
  
  
  

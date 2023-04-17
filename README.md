@@ -6,6 +6,7 @@
   - [Install ROS Noetic](#Install-ROS-Noetic)
   - [Create WorkSpace](#Create-WorkSpace)
   - [Create Package](#Create-Package)
+- [Packages install](#Packages-install)
 - [Tools & setup](#Tools-&-setup)
 - [IDE](#IDE)
 
@@ -121,6 +122,33 @@ sudo apt install ros-noetic-ros-base
   catkin_make
   ```
   
+ # Packages install
+ <p> As we use Arduino in transmitting speed and get data of Encoder we need to install rosserial packages
+ 
+ ```console
+ sudo apt-get install ros-noetic-rosserial
+ sudo apt-get install ros-noetic-rosserial-msgs
+ sudo apt-get install ros-noetic-rosserial-arduino  
+ sudo apt-get install ros-noetic-rosserial-python
+ sudo apt-cache search ros-noetic-rosserial
+ ```
+ <p> So you need to install Arduino IDE 
+ 
+ ```console
+ sudo apt update
+ sudo apt upgrade
+ mkdir arduino
+ cd arduino/
+ wget https://downloads.arduino.cc/arduino-1.8.15-linux64.tar.xz
+ tar -xvf ./arduino-1.8.15-linux64.tar.xz
+ cd arduino-1.8.15/
+ sudo ./install.sh
+ ```
+ <p> As we create map 3D we need to install RTAB map (that we use SLAM)  
+ 
+ ```console
+ sudo apt-get install ros-noetic-rtabmap-ros
+ ```
   
  
  

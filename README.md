@@ -9,8 +9,8 @@
 - [Packages install](#Packages-install)
 - [Tools & setup](#Tools-&-setup)
 - [IDE](#IDE)
-- [Create interactive web](#Create_interactive_web)
-  - [Description](#Description)
+- [Create interactive web](#Create-interactive-web)
+  - [Description web](#Description-web)
   - [install](#install)
 
 

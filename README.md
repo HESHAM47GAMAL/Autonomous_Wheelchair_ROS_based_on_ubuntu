@@ -9,6 +9,9 @@
 - [Packages install](#Packages-install)
 - [Tools & setup](#Tools-&-setup)
 - [IDE](#IDE)
+- [Create interactive web](#Create_interactive_web)
+  - [Description](#Description)
+  - [install](#install)
 
 
 # Description
@@ -149,6 +152,16 @@ sudo apt install ros-noetic-ros-base
  ```console
  sudo apt-get install ros-noetic-rtabmap-ros
  ```
+ 
+ # Create interactive web 
+  ## Description 
+  <p> Here try to load data base of map created in web page to be interactive instead using RVIZ to use by end user  , I will do this using roslibjs
+  
+  ## install 
+  
+  ```console 
+  sudo apt-get install ros-noetic-rosbridge-server
+  ```
   
  
  

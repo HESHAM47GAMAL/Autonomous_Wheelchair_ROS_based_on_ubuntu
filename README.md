@@ -12,6 +12,8 @@
 - [Create interactive web](#Create-interactive-web)
   - [Description web](#Description-web)
   - [install](#install)
+  - [create React](#create-React)
+  
 
 
 # Description
@@ -161,6 +163,27 @@ sudo apt install ros-noetic-ros-base
   
   ```console 
   sudo apt-get install ros-noetic-rosbridge-server
+  sudo apt install npm
+  ```
+  
+  <p> if you face problem that  current version of Node less than 14 ,can check with this line 
+  
+  ```console
+  node -v
+  ```
+  
+  so do following lines 
+  
+  ```console 
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+  nvm install 14
+  nvm use 14
+  ```
+  
+  
+  ## create React
+  ```console
+  npx craete-react-app react-ros-robot
   ```
   
  

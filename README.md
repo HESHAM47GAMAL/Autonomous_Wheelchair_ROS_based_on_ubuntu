@@ -164,6 +164,8 @@ sudo apt install ros-noetic-ros-base
   ```console 
   sudo apt-get install ros-noetic-rosbridge-server
   sudo apt install npm
+  npm install react-bootstrap
+  npm install react-router-dom  
   ```
   
   <p> if you face problem that  current version of Node less than 14 ,can check with this line 

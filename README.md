@@ -199,8 +199,8 @@ sudo apt install ros-noetic-ros-base
   ## Start
   
   ```console
-  npm start
   roslaunch rosbridge_server rosbridge_websocket.launch
+  npm start
   ```
   
  

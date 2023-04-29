@@ -168,6 +168,13 @@ sudo apt install ros-noetic-ros-base
   npm install react-bootstrap
   npm install react-router-dom  
   ```
+  <p>👀️👀️👀️ look this line will not work with npm 
+  
+  ```console 
+  npm install roslib
+  npm install ros2d
+  ```
+  <p> so to solve this watch video Anis kouba (connection component /import roslib)
   
   <p> if you face problem that  current version of Node less than 14 ,can check with this line 
   
@@ -193,6 +200,7 @@ sudo apt install ros-noetic-ros-base
   
   ```console
   npm start
+  roslaunch rosbridge_server rosbridge_websocket.launch
   ```
   
  

@@ -168,6 +168,7 @@ sudo apt install ros-noetic-ros-base
   npm install react-bootstrap
   npm install react-router-dom  
   npm install react-joystick-component
+  npm install three
   ```
   <p>👀️👀️👀️ look this line will not work with npm 
   
